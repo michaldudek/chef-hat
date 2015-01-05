@@ -1,5 +1,4 @@
 include_recipe "apache2"
-include_recipe "focusson::php"
 
 package "phpmyadmin" do 
     action :install
