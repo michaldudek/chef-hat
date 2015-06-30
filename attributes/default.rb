@@ -10,7 +10,12 @@ default["php"]["modules"]           = [
     "php5-common",
     "php5-cli",
     "php5-memcached",
-    "php5-dev"
+    "php5-dev",
+    "php5-curl",
+    "php5-intl",
+    "php5-mcrypt",
+    "php5-gd",
+    "php5-imagick"
 ]
 
 # php.ini
