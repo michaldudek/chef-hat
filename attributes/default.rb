@@ -46,6 +46,21 @@ default["php"]["config"]["sendmail_path"]       = "/usr/sbin/sendmail -t -i"
 
 default["php"]["config"]["custom"]              = []
 
+default["php"]["config"]["opcache"]["enable"]   = 1
+default["php"]["config"]["opcache"]["enable_cli"] = 0
+default["php"]["config"]["opcache"]["memory_consumption"] = 256 # 512
+default["php"]["config"]["opcache"]["interned_strings_buffer"] = 16
+default["php"]["config"]["opcache"]["max_accelerated_files"] = 50000
+default["php"]["config"]["opcache"]["max_wasted_percentage"] = 5
+default["php"]["config"]["opcache"]["validate_timestamps"] = 1 # 0
+default["php"]["config"]["opcache"]["revalidate_freq"] = 2 # more?
+default["php"]["config"]["opcache"]["revalidate_path"] = 0 # 1
+default["php"]["config"]["opcache"]["dups_fix"] = 0
+default["php"]["config"]["opcache"]["max_file_size"] = 0
+default["php"]["config"]["opcache"]["force_restart_timeout"] = 180
+default["php"]["config"]["opcache"]["error_log"] = ""
+default["php"]["config"]["opcache"]["log_verbosity_level"] = 3
+
 # xdebug
 
 default["php"]["xdebug"]                        = []
