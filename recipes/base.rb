@@ -1,10 +1,3 @@
-bash "apt_get_update" do
-    code <<-EOH
-        apt-get update
-    EOH
-    action :run
-end
-
 packages_list = %w(
     git
     curl
