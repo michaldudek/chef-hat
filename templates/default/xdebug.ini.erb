@@ -1,0 +1,5 @@
+zend_extension = xdebug.so
+
+<% @config.each do |setting, value| %>
+xdebug.<%= @setting %> = <%= @value %>
+<% end %>

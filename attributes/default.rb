@@ -41,3 +41,7 @@ default["php"]["config"]["mail.add_x_header"]   = "On"
 default["php"]["config"]["sendmail_path"]       = "/usr/sbin/sendmail -t -i"
 
 default["php"]["config"]["custom"]              = []
+
+# xdebug
+
+default["php"]["xdebug"]                        = []
