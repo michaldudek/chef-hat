@@ -28,6 +28,7 @@ Vagrant.configure("2") do |config|
             "recipe[chef-hat::php]",
             "recipe[chef-hat::php-composer]",
             "recipe[chef-hat::php-mongo]",
+            "recipe[chef-hat::php-redis]",
             "recipe[chef-hat::php-xdebug]"
         ]
         chef.json = {}

@@ -6,6 +6,9 @@ default["php"]["conf_dir"]          = "/etc/php5/cli"
 default["php"]["ext_conf_dir"]      = "/etc/php5/mods-available"
 default["php"]["real_conf_dir"]     = "/etc/php5/cli/conf.d"
 
+default["php"]["redis"]["repository"] = "https://github.com/phpredis/phpredis.git"
+default["php"]["redis"]["version"]  = "master"
+
 default["php"]["modules"]           = [
     "php5-common",
     "php5-cli",
