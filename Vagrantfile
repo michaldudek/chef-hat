@@ -25,7 +25,8 @@ Vagrant.configure("2") do |config|
         chef.run_list = [
             "recipe[apt]",
             "recipe[chef-hat::base]",
-            "recipe[chef-hat::php]"
+            "recipe[chef-hat::php]",
+            "recipe[chef-hat::composer]"
         ]
         chef.json = {}
     end
