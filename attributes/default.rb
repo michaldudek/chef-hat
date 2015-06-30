@@ -9,6 +9,7 @@ default["php"]["real_conf_dir"]     = "/etc/php5/cli/conf.d"
 default["php"]["modules"]           = [
     "php5-common",
     "php5-cli",
+    "php-pear",
     "php5-memcached",
     "php5-dev",
     "php5-curl",
