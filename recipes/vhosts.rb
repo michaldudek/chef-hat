@@ -52,7 +52,7 @@ node["vhosts"].each do |name, config|
         end
     end
 
-    # finally install the vhost
+    # choose proper template for the vhost
     if config["template"].nil?
         template_cookbook = "chef-hat"
         template_file = "vhost.erb"
@@ -61,10 +61,36 @@ node["vhosts"].each do |name, config|
         template_file = config["template"]["file"].nil? ? "vhost.erb" : config["template"]["file"]
     end
 
+    # decide on some variables
     port = config["port"].nil? ? 80 : config["port"]
     aliases = config["aliases"].nil? ? [] : config["aliases"]
     force_www = config["force_www"].nil? ? nil : config["force_www"]
+    ssl = config["ssl"].nil? ? {"enabled" => false} : config["ssl"]
+
+    # manage ssl certificate
+    ssl = {
+        enabled: (config["ssl"].nil? || config["ssl"]["enabled"].nil?) ? false : config["ssl"]["enabled"],
+        cert_file: (config["ssl"].nil? || config["ssl"]["cert_file"].nil?) ? nil : config["ssl"]["cert_file"],
+        cert_key_file: (config["ssl"].nil? || config["ssl"]["cert_key_file"].nil?) ? nil : config["ssl"]["cert_key_file"],
+        cert_chain_file: (config["ssl"].nil? || config["ssl"]["cert_chain_file"].nil?) ? nil : config["ssl"]["cert_chain_file"]
+    }
+    if ssl[:enabled] == true
+        # if ssl certificate is enabled, but none is specified then generate one
+        if ssl[:cert_file].nil?
+            cert = ssl_certificate config["host"] do
+                common_name config["host"]
+                country "UK"
+                city "London"
+                organization "Vagrant"
+                department "Vagrant"
+            end
+            ssl[:cert_file] = cert.cert_path
+            ssl[:cert_key_file] = cert.key_path
+            ssl[:cert_chain_file] = cert.chain_path
+        end
+    end
     
+    # finally install the vhost
     web_app name do
         cookbook template_cookbook
         template template_file
@@ -74,7 +100,7 @@ node["vhosts"].each do |name, config|
         docroot docroot
         logdir logdir
         force_www force_www
-        ssl config["ssl"]
+        ssl ssl
         notifies :reload, "service[apache2]"
     end
 end

@@ -25,7 +25,9 @@ Vagrant.configure("2") do |config|
         "test.chefhat.dev",
         "www.test.chefhat.dev",
         "info.chefhat.dev",
-        "www.info.chefhat.dev"
+        "www.info.chefhat.dev",
+        "secure.chefhat.dev",
+        "www.secure.chefhat.dev"
     ]
 
     # fixed chef version to be sure that recipes are working
@@ -47,15 +49,9 @@ Vagrant.configure("2") do |config|
             "recipe[chef-hat::php-mongo]",
             "recipe[chef-hat::php-redis]",
             "recipe[chef-hat::php-xdebug]",
-            "recipe[chef-hat::ssl_certs]",
             "recipe[chef-hat::vhosts]"
         ]
         chef.json = {
-            "ssl_certs" => {
-                "*.secure.chefhat.dev" => {
-                    "path" => "/etc/ssl/private/secure_chefhat_dev.pem"
-                }
-            },
             "vhosts" => {
                 "100-chefhat" => {
                     "host" => "chefhat.dev",
@@ -76,6 +72,16 @@ Vagrant.configure("2") do |config|
                     "log_dir" => "logs",
                     "doc_root" => "",
                     "force_www" => "no_www"
+                },
+                "103-chefhat-secure" => {
+                    "host" => "www.secure.chefhat.dev",
+                    "root_dir" => "/var/www/chefhat",
+                    "log_dir" => "logs",
+                    "doc_root" => "",
+                    "force_www" => "yes",
+                    "ssl" => {
+                        "enabled" => true
+                    }
                 }
             }
         }
