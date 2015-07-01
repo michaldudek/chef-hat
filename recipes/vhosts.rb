@@ -1,18 +1,8 @@
 # require apache2 to be installed
 include_recipe "apache2"
-
-# enable some modules by default
-apache_module "ssl" do
-    enable true
-end
-
-apache_module "socache_shmcb" do
-    enable true
-end
-
-apache_module "rewrite" do
-    enable true
-end
+include_recipe "apache2::mod_rewrite"
+include_recipe "apache2::mod_ssl"
+include_recipe "apache2::mod_socache_shmcb"
 
 # iterate over all defined vhosts and install them
 node["vhosts"].each do |name, config|
