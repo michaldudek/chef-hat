@@ -9,10 +9,22 @@ Vagrant.configure("2") do |config|
     # VirtualBox specific config - eg. composer memory problem
     config.vm.provider :virtualbox do |vb, override|
         override.vm.synced_folder ".", "/vagrant", :nfs => true
+        override.vm.synced_folder "./tests/fixtures", "/var/www/chefhat", :nfs => true
         vb.customize ["modifyvm", :id, "--rtcuseutc", "on"]
         vb.customize ["modifyvm", :id, "--memory", 1024]
         vb.customize ["modifyvm", :id, "--cpus", 1]
     end
+
+    # manage hosts file on the host machine
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+    config.hostmanager.ignore_private_ip = false
+    config.hostmanager.include_offline = true
+    config.hostmanager.aliases = [
+        "www.chefhat.dev",
+        "test.chefhat.dev",
+        "info.chefhat.dev"
+    ]
 
     # fixed chef version to be sure that recipes are working
     config.omnibus.chef_version = :latest
@@ -24,14 +36,33 @@ Vagrant.configure("2") do |config|
     config.vm.provision "chef_solo" do |chef|
         chef.run_list = [
             "recipe[apt]",
+            "recipe[apache2]",
             "recipe[chef-hat::base]",
             "recipe[chef-hat::php]",
             "recipe[chef-hat::php-composer]",
             "recipe[chef-hat::php-mongo]",
             "recipe[chef-hat::php-redis]",
-            "recipe[chef-hat::php-xdebug]"
+            "recipe[chef-hat::php-xdebug]",
+            "recipe[chef-hat::vhosts]"
         ]
-        chef.json = {}
+        chef.json = {
+            "vhosts" => {
+                "100-chefhat" => {
+                    "host" => "chefhat.dev",
+                    "aliases" => [
+                        "www.chefhat.dev",
+                        "test.chefhat.dev",
+                        "info.chefhat.dev"
+                    ],
+                    "root_dir" => "/var/www/chefhat",
+                    "log_dir" => "logs",
+                    "doc_root" => ""
+                }
+            }
+        }
     end
+
+    # also run hostmanager after all provisioning has happened
+    config.vm.provision :hostmanager
 
 end

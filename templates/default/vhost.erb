@@ -1,0 +1,18 @@
+<VirtualHost *:<%= @params[:port] %>>
+    ServerName <%= @params[:host] %>
+    ServerAlias www.<%= @params[:host] %>
+    <% @params[:aliases].each do |server_alias| %>
+    ServerAlias <%= server_alias %>
+    <% end %>
+
+    DocumentRoot <%= @params[:docroot] %>
+
+    <Directory "<%= @params[:docroot] %>">
+        Options -Indexes +FollowSymLinks -MultiViews
+        Require all granted
+    </Directory>
+
+    LogLevel info
+    ErrorLog <%= @params[:logdir] %>/apache_error.log
+    CustomLog <%= @params[:logdir] %>/apache_access.log combined
+</VirtualHost>
