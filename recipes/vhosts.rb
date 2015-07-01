@@ -73,6 +73,7 @@ node["vhosts"].each do |name, config|
 
     port = config["port"].nil? ? 80 : config["port"]
     aliases = config["aliases"].nil? ? [] : config["aliases"]
+    force_www = config["force_www"].nil? ? nil : config["force_www"]
     
     web_app name do
         cookbook template_cookbook
@@ -82,6 +83,7 @@ node["vhosts"].each do |name, config|
         port port
         docroot docroot
         logdir logdir
+        force_www force_www
         ssl config["ssl"]
         notifies :reload, "service[apache2]"
     end

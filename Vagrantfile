@@ -23,7 +23,9 @@ Vagrant.configure("2") do |config|
     config.hostmanager.aliases = [
         "www.chefhat.dev",
         "test.chefhat.dev",
-        "info.chefhat.dev"
+        "www.test.chefhat.dev",
+        "info.chefhat.dev",
+        "www.info.chefhat.dev"
     ]
 
     # fixed chef version to be sure that recipes are working
@@ -52,13 +54,31 @@ Vagrant.configure("2") do |config|
                 "100-chefhat" => {
                     "host" => "chefhat.dev",
                     "aliases" => [
-                        "www.chefhat.dev",
-                        "test.chefhat.dev",
-                        "info.chefhat.dev"
+                        "www.chefhat.dev"
                     ],
                     "root_dir" => "/var/www/chefhat",
                     "log_dir" => "logs",
                     "doc_root" => ""
+                },
+                "101-chefhat-test" => {
+                    "host" => "test.chefhat.dev",
+                    "aliases" => [
+                        "www.test.chefhat.dev"
+                    ],
+                    "root_dir" => "/var/www/chefhat",
+                    "log_dir" => "logs",
+                    "doc_root" => "",
+                    "force_www" => "yes"
+                },
+                "102-chefhat-info" => {
+                    "host" => "info.chefhat.dev",
+                    "aliases" => [
+                        "www.info.chefhat.dev"
+                    ],
+                    "root_dir" => "/var/www/chefhat",
+                    "log_dir" => "logs",
+                    "doc_root" => "",
+                    "force_www" => "no_www"
                 }
             }
         }

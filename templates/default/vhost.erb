@@ -12,6 +12,18 @@
         Require all granted
     </Directory>
 
+    RewriteEngine on
+
+    <% if @params[:force_www] == "yes" %>
+    # Force www.
+    RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteRule .* http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+    <% elsif @params[:force_www] == "no_www" %>
+    # Force no www.
+    RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+    RewriteRule .* http://%1%{REQUEST_URI} [R=301,L]
+    <% end %>
+
     LogLevel info
     ErrorLog <%= @params[:logdir] %>/apache_error.log
     CustomLog <%= @params[:logdir] %>/apache_access.log combined
