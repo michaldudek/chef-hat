@@ -47,9 +47,15 @@ Vagrant.configure("2") do |config|
             "recipe[chef-hat::php-mongo]",
             "recipe[chef-hat::php-redis]",
             "recipe[chef-hat::php-xdebug]",
+            "recipe[chef-hat::ssl_certs]",
             "recipe[chef-hat::vhosts]"
         ]
         chef.json = {
+            "ssl_certs" => {
+                "*.secure.chefhat.dev" => {
+                    "path" => "/etc/ssl/private/secure_chefhat_dev.pem"
+                }
+            },
             "vhosts" => {
                 "100-chefhat" => {
                     "host" => "chefhat.dev",
