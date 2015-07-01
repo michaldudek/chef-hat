@@ -1,6 +1,11 @@
 <VirtualHost *:<%= @params[:port] %>>
     ServerName <%= @params[:host] %>
+    <% if @params[:host] =~ /^www\./i %>
+    ServerAlias <%= @params[:host].sub(/^www\./i, "") %>
+    <% else %>
     ServerAlias www.<%= @params[:host] %>
+    <% end %>
+
     <% @params[:aliases].each do |server_alias| %>
     ServerAlias <%= server_alias %>
     <% end %>
