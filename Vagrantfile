@@ -41,7 +41,6 @@ Vagrant.configure("2") do |config|
         chef.run_list = [
             "recipe[apt]",
             "recipe[apache2]",
-            "recipe[apache2::mod_php5]",
             "recipe[chef-hat::base]",
             "recipe[chef-hat::php]",
             "recipe[chef-hat::php-apache2]",
