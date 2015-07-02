@@ -12,7 +12,7 @@ testing details and environment check the [Vagrantfile](Vagrantfile).
 Even though this cookbook isn't available in [Berkshelf Supermarket](http://api.berkshelf.com/) you still can install
 it using Berkshelf by adding it to your `Berksfile` like that:
 
-    cookbook "chef-hat", git: "https://github.com/michaldudek/chef-hat.git", tag: "0.3.2"
+    cookbook "chef-hat", git: "https://github.com/michaldudek/chef-hat.git", tag: "0.3.3"
 
 # Usage
 
