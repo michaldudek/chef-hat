@@ -12,7 +12,7 @@ testing details and environment check the [Vagrantfile](Vagrantfile).
 Even though this cookbook isn't available in [Berkshelf Supermarket](http://api.berkshelf.com/) you still can install
 it using Berkshelf by adding it to your `Berksfile` like that:
 
-    cookbook "chef-hat", git: "https://github.com/michaldudek/chef-hat.git", tag: "0.3.1"
+    cookbook "chef-hat", git: "https://github.com/michaldudek/chef-hat.git", tag: "0.3.2"
 
 # Usage
 
@@ -124,6 +124,17 @@ Below is a list of all possible configuration options:
 | ssl.cert_file             | `nil`         | If you want to use your SSL certificate then specify its location here (it should be already on node). If `ssl.enabled` will be set to `true`, but no `ssl.cert_file` given, then a self-signed certificate will be automatically generated and used.
 | ssl.cert_key_file         | `nil`         | Your certificate key file location. See above.
 | ssl.cert_chain_file       | `nil`         | Your certificate chain file location. See above.
+
+*Pro tip*: If you're running a Vagrant VM and use NFS for syncing your dir, then you should set Apache2 to run as 
+`vagrant` user and `vagrant` group. This should resolve any permission issues with `DocumentRoot` and the shared
+directory. You can set it with attributes:
+
+    {
+        "apache": {
+            "user": "vagrant",
+            "group": "vagrant"
+        }
+    }
 
 - - -
 

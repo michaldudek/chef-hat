@@ -51,6 +51,11 @@ Vagrant.configure("2") do |config|
             "recipe[chef-hat::vhosts]"
         ]
         chef.json = {
+            "apache" => {
+                # apache should run as vagrant:vagrant in Vagrant with NFS synced dirs, due to dir permissions
+                "user" => "vagrant",
+                "group" => "vagrant"
+            },
             "vhosts" => {
                 "100-chefhat" => {
                     "host" => "chefhat.dev",

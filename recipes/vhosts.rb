@@ -7,17 +7,22 @@ include_recipe "apache2::mod_socache_shmcb"
 # iterate over all defined vhosts and install them
 node["vhosts"].each do |name, config|
     # create all necessary dirs for this host
+    
+    if node["apache"]["user"] == "vagrant"
+        owner = nil
+        group = nil
+    else
+        owner = node["apache"]["user"]
+        group = node["apache"]["group"]
+    end
      
     # the root dir
     # sometimes it may not be possible to create it (e.g.if its the same as shared dir on Vagrant)
     directory config["root_dir"] do
-        owner "www-data"
-        group "www-data"
+        owner owner
+        group group
         mode 0755
         action :create
-        not_if do
-            Dir.exists?(config["root_dir"])
-        end
     end
 
     # doc root
@@ -26,13 +31,10 @@ node["vhosts"].each do |name, config|
         docroot = docroot + "/" + dir
 
         directory docroot do
-            owner "www-data"
-            group "www-data"
+            owner owner
+            group group
             mode 0755
             action :create
-            not_if do
-                Dir.exists?(docroot)
-            end
         end
     end
 
@@ -42,8 +44,8 @@ node["vhosts"].each do |name, config|
         logdir = logdir + "/" + dir
 
         directory logdir do
-            owner "www-data"
-            group "www-data"
+            owner owner
+            group group
             mode 0775
             action :create
             not_if do

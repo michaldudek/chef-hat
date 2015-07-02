@@ -2,7 +2,7 @@ name             "chef-hat"
 maintainer       "Michal Palys-Dudek"
 maintainer_email "michal@michaldudek.pl"
 description      "What's a Chef without their hat? This is a Chef Cookbook with few recipes I use often."
-version          "0.3.0"
+version          "0.3.2"
 
 depends "apt"
 depends "apache2"
