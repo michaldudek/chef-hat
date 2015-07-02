@@ -1,4 +1,5 @@
 # require apache2 with mod_php5 to be already installed
+include_recipe "chef-hat::php"
 include_recipe "apache2"
 include_recipe "apache2::mod_php5"
 

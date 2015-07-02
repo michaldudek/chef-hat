@@ -56,6 +56,8 @@ Check [attributes/php.rb](attributes/php.rb) for list of possible options. All a
 Add this recipe to your run list if you want to enable PHP 5.6 in your Apache2 server. It will also make Apache and CLI
 use the same configuration of PHP with a shared `php.ini` file.
 
+You should use this recipe instead of calling `apache2::mod_php5` directly in your `run_list`.
+
 ### chef-hat::php-composer
 
 Installs [Composer](https://getcomposer.org/) globally.
@@ -127,7 +129,7 @@ Below is a list of all possible configuration options:
 
 # Contributing
 
-
+Feel free to fork and contribute to this repository. I'm open to any suggestions.
 
 # License
 
