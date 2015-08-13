@@ -18,6 +18,7 @@ default["php"]["modules"]           = [
     "php5-curl",
     "php5-intl",
     "php5-mcrypt",
+    "php5-mysql",
     "php5-gd",
     "php5-imagick"
 ]
