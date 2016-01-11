@@ -1,26 +1,27 @@
-default["php"]["ppa"]["uri"]        = "http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu"
-default["php"]["ppa"]["key"]        = "E5267A6C"
+default["php"]["ppa"]["uri"]        = "http://ppa.launchpad.net/ondrej/php-7.0/ubuntu"
+default["php"]["ppa"]["key"]        = "E5267A6C "
 default["php"]["ppa"]["key_server"] = "keyserver.ubuntu.com"
 default["php"]["ppa"]["components"] = ["trusty", "main"]
-default["php"]["conf_dir"]          = "/etc/php5/cli"
-default["php"]["ext_conf_dir"]      = "/etc/php5/mods-available"
-default["php"]["real_conf_dir"]     = "/etc/php5/cli/conf.d"
+default["php"]["conf_dir"]          = "/etc/php/7.0/cli"
+default["php"]["ext_conf_dir"]      = "/etc/php/7.0/mods-available"
+default["php"]["real_conf_dir"]     = "/etc/php/7.0/cli/conf.d"
 
 default["php"]["redis"]["repository"] = "https://github.com/phpredis/phpredis.git"
 default["php"]["redis"]["version"]  = "master"
 
 default["php"]["modules"]           = [
-    "php5-common",
-    "php5-cli",
+    "php7.0-common",
+    "php7.0-cli",
     "php-pear",
-    "php5-memcached",
-    "php5-dev",
-    "php5-curl",
-    "php5-intl",
-    "php5-mcrypt",
-    "php5-mysql",
-    "php5-gd",
-    "php5-imagick"
+    "php-memcached",
+    "php7.0-dev",
+    "php7.0-curl",
+    "php7.0-intl",
+    "php7.0-mcrypt",
+    "php7.0-mysql",
+    "php7.0-gd",
+    "php-imagick",
+    "php7.0-json"
 ]
 
 # php.ini
