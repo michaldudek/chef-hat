@@ -1,27 +1,23 @@
-default["php"]["ppa"]["uri"]        = "http://ppa.launchpad.net/ondrej/php-7.0/ubuntu"
-default["php"]["ppa"]["key"]        = "E5267A6C "
+default["php"]["ppa"]["uri"]        = "http://ppa.launchpad.net/ondrej/php/ubuntu"
+default["php"]["ppa"]["key"]        = "E5267A6C"
 default["php"]["ppa"]["key_server"] = "keyserver.ubuntu.com"
-default["php"]["ppa"]["components"] = ["trusty", "main"]
+default["php"]["ppa"]["components"] = ["xenial", "main"]
 default["php"]["conf_dir"]          = "/etc/php/7.0/cli"
 default["php"]["ext_conf_dir"]      = "/etc/php/7.0/mods-available"
 default["php"]["real_conf_dir"]     = "/etc/php/7.0/cli/conf.d"
 
-default["php"]["redis"]["repository"] = "https://github.com/phpredis/phpredis.git"
-default["php"]["redis"]["version"]  = "master"
-
 default["php"]["modules"]           = [
-    "php7.0-common",
-    "php7.0-cli",
+    "php7.0",
     "php-pear",
     "php-memcached",
-    "php7.0-dev",
+    "php-mongodb",
+    "php-redis",
     "php7.0-curl",
     "php7.0-intl",
     "php7.0-mcrypt",
     "php7.0-mysql",
     "php7.0-gd",
-    "php-imagick",
-    "php7.0-json"
+    "php-imagick"
 ]
 
 # php.ini

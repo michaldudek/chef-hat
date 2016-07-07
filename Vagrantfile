@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
     # install ubuntu
-    config.vm.box = "chef/ubuntu-14.04"
+    config.vm.box = "bento/ubuntu-16.04"
 
     # configure network
     config.vm.hostname = "chefhat.dev"
@@ -45,8 +45,6 @@ Vagrant.configure("2") do |config|
             "recipe[chef-hat::php]",
             "recipe[chef-hat::php-apache2]",
             "recipe[chef-hat::php-composer]",
-            "recipe[chef-hat::php-mongo]",
-#            "recipe[chef-hat::php-redis]",
             "recipe[chef-hat::php-xdebug]",
             "recipe[chef-hat::vhosts]"
         ]
