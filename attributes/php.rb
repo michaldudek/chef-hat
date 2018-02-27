@@ -2,9 +2,9 @@ default["php"]["ppa"]["uri"]        = "http://ppa.launchpad.net/ondrej/php/ubunt
 default["php"]["ppa"]["key"]        = "E5267A6C"
 default["php"]["ppa"]["key_server"] = "keyserver.ubuntu.com"
 default["php"]["ppa"]["components"] = ["xenial", "main"]
-default["php"]["conf_dir"]          = "/etc/php5/cli"
-default["php"]["ext_conf_dir"]      = "/etc/php5/mods-available"
-default["php"]["real_conf_dir"]     = "/etc/php5/cli/conf.d"
+default["php"]["conf_dir"]          = "/etc/php/5.6/cli"
+default["php"]["ext_conf_dir"]      = "/etc/php/5.6/mods-available"
+default["php"]["real_conf_dir"]     = "/etc/php/5.6/cli/conf.d"
 
 default["php"]["redis"]["repository"] = "https://github.com/phpredis/phpredis.git"
 default["php"]["redis"]["version"]  = "master"
