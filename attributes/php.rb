@@ -1,7 +1,7 @@
-default["php"]["ppa"]["uri"]        = "http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu"
+default["php"]["ppa"]["uri"]        = "http://ppa.launchpad.net/ondrej/php/ubuntu"
 default["php"]["ppa"]["key"]        = "E5267A6C"
 default["php"]["ppa"]["key_server"] = "keyserver.ubuntu.com"
-default["php"]["ppa"]["components"] = ["trusty", "main"]
+default["php"]["ppa"]["components"] = ["xenial", "main"]
 default["php"]["conf_dir"]          = "/etc/php5/cli"
 default["php"]["ext_conf_dir"]      = "/etc/php5/mods-available"
 default["php"]["real_conf_dir"]     = "/etc/php5/cli/conf.d"
@@ -10,17 +10,21 @@ default["php"]["redis"]["repository"] = "https://github.com/phpredis/phpredis.gi
 default["php"]["redis"]["version"]  = "master"
 
 default["php"]["modules"]           = [
-    "php5-common",
-    "php5-cli",
-    "php-pear",
-    "php5-memcached",
-    "php5-dev",
-    "php5-curl",
-    "php5-intl",
-    "php5-mcrypt",
-    "php5-mysql",
-    "php5-gd",
-    "php5-imagick"
+    "php5.6",
+    "php-gettext",
+    "php5.6-mbstring",
+    "libapache2-mod-php5.6",
+    "php-defaults",
+    "php-imagick",
+    "php-memcached",
+    "php-pear"
+    # "php5-cli",
+    # "php5-dev",
+    # "php5-curl",
+    # "php5-intl",
+    # "php5-mcrypt",
+    # "php5-mysql",
+    # "php5-gd",
 ]
 
 # php.ini
