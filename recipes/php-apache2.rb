@@ -10,13 +10,3 @@ end
 apache_module "php5.6" do
     enable true
 end
-
-directory "/etc/php5/apache2" do
-    action :delete
-    recursive true
-end
-
-link "/etc/php5/apache2" do
-    to node["php"]["conf_dir"]
-    notifies :reload, "service[apache2]"
-end
