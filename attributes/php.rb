@@ -14,17 +14,15 @@ default["php"]["modules"]           = [
     "php-gettext",
     "php5.6-mbstring",
     "libapache2-mod-php5.6",
-    "php-defaults",
-    "php-imagick",
-    "php-memcached",
+    "php5.6-mcrypt",
+    "php5.6-curl",
+    "php5.6-cli",
+    "php5.6-gd",
+    "php5.6-intl",
+    "php5.6-zip",
+    "php5.6-imagick",
+    "php5.6-memcached",
     "php-pear"
-    # "php5-cli",
-    # "php5-dev",
-    # "php5-curl",
-    # "php5-intl",
-    # "php5-mcrypt",
-    # "php5-mysql",
-    # "php5-gd",
 ]
 
 # php.ini
