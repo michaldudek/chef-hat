@@ -22,6 +22,8 @@ default["php"]["modules"]           = [
     "php5.6-zip",
     "php5.6-imagick",
     "php5.6-memcached",
+    "php5.6-mongodb",
+    "php5.6-redis",
     "php-pear"
 ]
 
