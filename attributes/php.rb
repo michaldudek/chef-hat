@@ -14,6 +14,7 @@ default["php"]["modules"]           = [
     "php-gettext",
     "php5.6-mbstring",
     "libapache2-mod-php5.6",
+    "php5.6-dev",
     "php5.6-mcrypt",
     "php5.6-curl",
     "php5.6-cli",

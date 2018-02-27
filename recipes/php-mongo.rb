@@ -1,6 +1,16 @@
-# ext-mongo requires pecl which requires pear
-package "php-pear" do
-    action :install
+# ext-mongo requires some additional packages to build
+packages_list = %w(
+    php-pear
+    libcurl4-openssl-dev
+    pkg-config
+    libssl-dev
+    libsslcommon2-dev
+)
+
+packages_list.each do |name| 
+    package name do 
+        action :install
+    end
 end
 
 bash "install php ext-mongo" do
